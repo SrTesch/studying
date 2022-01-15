@@ -1,4 +1,7 @@
-/* exercicio de sort simples do beecrowd*/
+/*
+exercicio de sort simples do beecrowd
+https://www.beecrowd.com.br/judge/pt/problems/view/1042
+*/
 
 #include <stdio.h>
 

@@ -1,3 +1,7 @@
+/*
+Exercício 1259 do beecrowd(pares e ímpares)
+https://www.beecrowd.com.br/judge/pt/problems/view/1259
+*/
 #include <stdio.h>
 
 int main(){
