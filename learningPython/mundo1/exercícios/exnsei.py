@@ -1,0 +1,6 @@
+n = input('Digite seu nome: ')
+print('É um prazer te conhecer {:20}!'.format(n))
+print('É um prazer te conhecer {:>20}!'.format(n))
+print('É um prazer te conhecer {:^20}!'.format(n))
+print('É um prazer te conhecer {:-^20}!'.format(n))
+print('É um prazer te conhecer {:=^20}!'.format(n))
