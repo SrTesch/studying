@@ -1,2 +1,5 @@
 tab = int(input('Olá! Qual tabuada você quer acessar? '))
-print('{1} x 1 = {1}\n{1} x 2 = {2}\n{1} x 3 = {3}'.format(tab, tab *2, tab * 3))
+print('{} x 1 = {}\n{} x 2 = {}\n{} x 3 = {}'.format(tab, tab, tab, tab*2, tab, tab*3))
+print('{} x 4 = {}\n{} x 5 = {}\n{} x 6 = {}'.format(tab, tab*4, tab, tab*5, tab, tab*6))
+print('{} x 7 = {}\n{} x 8 = {}\n{} x 9 = {}'.format(tab, tab*7, tab, tab*8, tab, tab*9))
+print('{} x 10 = {}'.format(tab, tab * 10))
