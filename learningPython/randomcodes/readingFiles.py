@@ -1,4 +1,4 @@
-file = open('example.txt', 'r')
+file = open('thiagao.txt', 'r')
 
 content = file.read()
 

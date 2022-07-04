@@ -1,3 +1,3 @@
 import os
 
-os.remove('renamed.txt')
+os.remove('thiagao.txt')
