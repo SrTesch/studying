@@ -1,4 +1,0 @@
-Dentro do mar, um surfista está sentado em sua prancha aguardando uma onda. Quando uma boa onda aparece, ele rema e tenta entrar na onda. Caso não consiga entrar na onda, ele se senta novamente na prancha para aguardar uma nova onda. Se conseguir entrar, ele surfa a onda, podendo finaliza-la ou tomar uma  vaca. Finalizando  a  onda,  ele  rema  de  volta  ao outside para  aguardar  uma próxima  onda  sentado  na prancha. Se tomar uma vaca, ele deve descansar para recuperar o folego, e depois remará de volta ao outside para aguardar uma outra onda.
-
-#ESTADO SENTADO
-entrada#1(onda boa): passa pra #ESTADO REMANDO
