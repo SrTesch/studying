@@ -1,0 +1,3 @@
+Este repositório foi criado pra guardar todas as coisas que eu precisasse pra estudar programação no geral...
+separando cada pasta por linguagem!
+Na pasta learningC, tem uma pasta separada pras coisas que eu aprendo e uso na faculdade.
