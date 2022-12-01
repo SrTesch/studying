@@ -19,11 +19,6 @@ for i in 1..5
 end
 
 
-for i in 1..5
-    p "the number on the for with 2 dots is: #{i}"
-end
-
-
 for i in 1...5
     p "the number on the for with 3 dots is: #{i}"
 end

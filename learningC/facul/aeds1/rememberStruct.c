@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Cars{
+typedef struct cars{
     int numChassi;
-    char placa[7];
-    char cor[10]    
-};
+    char placa[8];
+    char cor[10]; 
+}cars;
 
 
-void getCar(struct Cars *car){
+void getCar(cars *car){
     puts("Digite o número do Chassi:");
     scanf("%d", &car->numChassi);
     puts("Agora digite a placa do Carro:");
@@ -17,13 +17,13 @@ void getCar(struct Cars *car){
     scanf(" %s", &car->cor);
 };
 
-void imprimeCar(struct Cars *car){
+void imprimeCar(cars *car){
     printf("O número do chassi é: %d\nA placa do carro é: %s\nA cor do carro é: %s\n", car->numChassi, car->placa, car->cor);
 };
 
 int main(){
-    struct Cars *carro1;
-    carro1 = (struct Cars*)malloc(sizeof(struct Cars));
+    cars *carro1;
+    carro1 = (cars*)malloc(sizeof(cars));
     getCar(carro1);
     imprimeCar(carro1);
     return 0;
