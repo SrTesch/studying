@@ -2,17 +2,33 @@
 #include <stdlib.h>
 
 typedef struct lista{
-    char c;
+    int c;
     struct lista *prox;
 }lista;
 
 
 int main(){
-    lista *p = (lista *)malloc(sizeof(lista));
-    lista *q = (lista *)malloc(sizeof(lista));
-    p->c = 'F';
-    p->prox = q;
-    q->c = 'A';
-    q->prox = 0;
-    printf("p->c: %c\n", p->c);
+    lista *cab = (lista *)malloc(sizeof(lista));
+    cab->prox = NULL;
+    lista *p = (lista *) malloc(sizeof(lista));
+    p->c = 15;
+    p->prox = cab->prox;
+    cab->prox = p;
+    lista *q;
+
+    for(int i = 0; i < 30; i += 5){
+        q = p;
+        p = p->prox;
+        p = (lista *) malloc(sizeof(lista));
+        scanf("%d", &p->c);
+        p->prox = q->prox;
+        q->prox = p;
+    }
+
+
+    p = cab->prox;
+    while(p != NULL){
+        printf("%d\n", p->c*2);
+        p = p->prox;
+    }
 }
