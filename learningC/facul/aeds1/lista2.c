@@ -1,20 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#define MAX_LINE_LENGTH 254
+
+
+
+typedef struct no{
+    char file_name[30];
+    char c[MAX_LINE_LENGTH];
+    struct no *prox;
+}no;
 
 typedef struct lista{
-    int c;
-    struct lista *prox;
+    no *cab;
+    no *ret;
+    int tamanho;
 }lista;
 
-void insere(lista *cab, int valor){
-    lista *p = (lista *) malloc(sizeof(lista));
-    p->c = valor;
-    p->prox = cab->prox;
-    cab->prox = p;
+
+void leitura(no *cab, char valor[]){
+
 }
 
-void imprime(lista *cab){
-     lista *p = cab->prox;
+void insere(no *ret, char valor[]){
+    no *p = (no *) malloc(sizeof(no));
+    strcpy(p->c, valor);
+    p->prox = ret;
+    ret->prox = p;
+}
+
+void imprime(no *cab){
+    no *p = cab->prox;
     while(p != NULL){
         printf("%d\n", p->c);
         p = p->prox;
@@ -23,7 +39,7 @@ void imprime(lista *cab){
 
 int main(){
     int whatToDo = 1;
-    lista *cab = (lista *) malloc(sizeof(lista));
+    no *cab = (no *) malloc(sizeof(no));
     cab->prox = NULL;
 
     while(whatToDo != 0){
@@ -32,11 +48,13 @@ int main(){
 
         if(whatToDo == 1){
             
-            int valor;
-            printf("Digite o valor que deseja inserir: ");
-            scanf("%d", &valor);
+            char valor[30];
+            printf("Digite o nome do arquivo que deseja inserir: ");
+            scanf("%s", valor);
+            
             insere(cab, valor);
 
-        }else if(whatToDo == 2) imprime(cab);
+        }else if(whatToDo == 2)
+            imprime(cab);
     }
 }

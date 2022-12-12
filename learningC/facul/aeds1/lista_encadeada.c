@@ -1,25 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct lista{
+typedef struct no{
     int c;
-    struct lista *prox;
-}lista;
+    struct no *prox;
+}no;
 
 
 int main(){
-    lista *cab = (lista *)malloc(sizeof(lista));
+    no *cab = (no *)malloc(sizeof(no));
     cab->prox = NULL;
-    lista *p = (lista *) malloc(sizeof(lista));
+    no *p = (no *) malloc(sizeof(no));
     p->c = 15;
     p->prox = cab->prox;
     cab->prox = p;
-    lista *q;
+    no *q;
 
     for(int i = 0; i < 30; i += 5){
         q = p;
         p = p->prox;
-        p = (lista *) malloc(sizeof(lista));
+        p = (no *) malloc(sizeof(no));
         scanf("%d", &p->c);
         p->prox = q->prox;
         q->prox = p;
