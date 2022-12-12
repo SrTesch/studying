@@ -6,11 +6,19 @@ typedef struct lista{
     struct lista *prox;
 }lista;
 
-int insere(lista *cab, int valor){
+void insere(lista *cab, int valor){
     lista *p = (lista *) malloc(sizeof(lista));
     p->c = valor;
     p->prox = cab->prox;
     cab->prox = p;
+}
+
+void imprime(lista *cab){
+     lista *p = cab->prox;
+    while(p != NULL){
+        printf("%d\n", p->c);
+        p = p->prox;
+    }
 }
 
 int main(){
@@ -21,18 +29,14 @@ int main(){
     while(whatToDo != 0){
         printf("Digite 1 para Inserir um item novo na lista, 2 para printar e 0 para sair: ");
         scanf("%d", &whatToDo);
-        if(whatToDo == 2){
-            lista *p;
-            p = cab->prox;
-            while(p != NULL){
-                printf("%d\n", p->c);
-                p = p->prox;
-            }
-        }else if(whatToDo == 1){
+
+        if(whatToDo == 1){
+            
             int valor;
             printf("Digite o valor que deseja inserir: ");
             scanf("%d", &valor);
             insere(cab, valor);
-        }
+
+        }else if(whatToDo == 2) imprime(cab);
     }
 }
