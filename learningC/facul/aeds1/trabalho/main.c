@@ -12,16 +12,35 @@ int main(){
     nova_lista.ret = NULL;
     nova_lista.tam = 0;
 
-    printf("Digite o nome do arquivo que voce deseja inserir: ");
-    scanf("%s", file_name);
-    leitura(&nova_lista, file_name);
-    puts("Digite o nome do arquivo que voce quer achar:");
-    scanf("%s", file_name);
-    buscar_arq(&nova_lista, file_name);
-    printf("tamanho da lista => %d\n", nova_lista.tam);
+    int whatToDo = 1;
+    while(whatToDo != 0){
+        printf("Digite 1 para Inserir um item novo na lista, 2 para buscar, 3 para remover e 0 para sair: ");
+        scanf("%d", &whatToDo);
 
-    puts("REMOVE AI PORRA");
-    scanf("%s", file_name);
-    remove_arq(&nova_lista, file_name);
-    printf("tamanho da lista => %d\n", nova_lista.tam);
+        if(whatToDo == 1){
+            
+            char nome_do_arquivo[30];
+            printf("Digite o nome do arquivo que deseja inserir: ");
+            scanf("%s", nome_do_arquivo);
+            
+            leitura(&nova_lista, nome_do_arquivo);
+            imprime(&nova_lista);
+        }else if(whatToDo == 2){
+            char nome_do_arquivo[30];
+            printf("Digite o nome do arquivo que deseja buscar: ");
+            scanf("%s", nome_do_arquivo);
+
+            buscar_arq(&nova_lista, nome_do_arquivo);
+
+            imprime(&nova_lista);
+
+        }else if(whatToDo == 3){
+            char nome_do_arquivo[30];
+            printf("Digite o nome do arquivo que deseja remover: ");
+            scanf("%s", nome_do_arquivo);
+
+            remove_arq(&nova_lista, nome_do_arquivo);
+            imprime(&nova_lista);
+        }
+    }
 }

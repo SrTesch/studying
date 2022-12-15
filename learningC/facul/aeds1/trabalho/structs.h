@@ -5,8 +5,8 @@
 #define MAX_LENGHT 999
 
 typedef struct __no{
-    char file_name[30];
-    char c[MAX_LINE_LENGTH];
+    char nome_do_arquivo[30];
+    char conteudo[MAX_LINE_LENGTH];
     struct __no *prox;
 }no;
 
@@ -18,5 +18,6 @@ typedef struct lista{
 
 typedef struct conteudo_buscado{
     no *inicial;
+    no *anterior;
     int tam;
 }conteudo_buscado;
