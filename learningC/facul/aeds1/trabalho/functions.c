@@ -81,19 +81,18 @@ conteudo_buscado *busca(lista *lista, char *arq){
     conteudo->inicial = inicial;
     conteudo->tam = count;
     conteudo->anterior = anterior;
-
+    printf("Previous address=> %p\n", anterior);
     return conteudo;
 }
 
 
 void buscar_arq(lista *lista, char *arq){
-    system("clear");
     conteudo_buscado *arquivo = busca(lista, arq);
 
     no *atual = arquivo->inicial;
     int tamanho = arquivo->tam;
 
-    for(int i = 1; i <= tamanho; i++){
+    for(int i = 1; i < tamanho; i++){
         printf("%d - %p\n", i, atual);
         atual = atual->prox;
     }
@@ -105,7 +104,7 @@ void remove_arq(lista *lista, char *arq){
     no *aux;
     if(arquivo->anterior){ //verificando se é o primeiro da lista
         aux = arquivo->anterior;
-        for(int i = 1; i <= arquivo->tam; i++){
+        for(int i = 1; i < arquivo->tam; i++){
             aux->prox = atual->prox;
             free(atual);
             atual = aux->prox;
@@ -113,7 +112,7 @@ void remove_arq(lista *lista, char *arq){
         }
 
     }else{
-        for(int i = 1; i <= arquivo->tam; i++){
+        for(int i = 1; i < arquivo->tam; i++){
             aux = atual->prox;
             free(atual);
             atual = aux;

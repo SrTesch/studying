@@ -14,7 +14,7 @@ int main(){
 
     int whatToDo = 1;
     while(whatToDo != 0){
-        printf("Digite 1 para Inserir um item novo na lista, 2 para buscar, 3 para remover e 0 para sair: ");
+        printf("0- Sair\n1- Inserir um item novo na lista\n2- Buscar arquivo\n3- Remover arquivo\n4- Imprimir toda a lista\n");
         scanf("%d", &whatToDo);
 
         if(whatToDo == 1){
@@ -24,22 +24,22 @@ int main(){
             scanf("%s", nome_do_arquivo);
             
             leitura(&nova_lista, nome_do_arquivo);
-            imprime(&nova_lista);
+            printf("tamanho da lista => %d\n", nova_lista.tam);
         }else if(whatToDo == 2){
             char nome_do_arquivo[30];
             printf("Digite o nome do arquivo que deseja buscar: ");
             scanf("%s", nome_do_arquivo);
 
             buscar_arq(&nova_lista, nome_do_arquivo);
-
-            imprime(&nova_lista);
-
+            printf("tamanho da lista => %d\n", nova_lista.tam);
         }else if(whatToDo == 3){
             char nome_do_arquivo[30];
             printf("Digite o nome do arquivo que deseja remover: ");
             scanf("%s", nome_do_arquivo);
-
             remove_arq(&nova_lista, nome_do_arquivo);
+            printf("tamanho da lista => %d\n", nova_lista.tam);
+        }else if(whatToDo == 4){
+
             imprime(&nova_lista);
         }
     }
