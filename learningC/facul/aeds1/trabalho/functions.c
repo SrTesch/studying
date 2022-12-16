@@ -64,37 +64,31 @@ conteudo_buscado *busca(lista *lista, char *arq){
         atual = atual->prox;
     }
 
-    int count = 1;
 
     inicial = atual;
 
-    while(strcmp(atual->nome_do_arquivo,arq) == 0){//esse while percorre o arquivo desejado.
-        if(atual->prox == NULL)
-            break;
-        else
-            atual = atual->prox;
-
-        count++;
-    }
-
     conteudo_buscado * conteudo = (conteudo_buscado *)malloc(sizeof(conteudo_buscado));
     conteudo->inicial = inicial;
-    conteudo->tam = count;
     conteudo->anterior = anterior;
     printf("Previous address=> %p\n", anterior);
     return conteudo;
 }
 
 
-void buscar_arq(lista *lista, char *arq){
+void imprimir_arq(lista *lista, char *arq){
     conteudo_buscado *arquivo = busca(lista, arq);
 
     no *atual = arquivo->inicial;
-    int tamanho = arquivo->tam;
-
-    for(int i = 1; i < tamanho; i++){
-        printf("%d - %p\n", i, atual);
-        atual = atual->prox;
+    int count = 1;
+    while(strcmp(atual->nome_do_arquivo,arq) == 0){//esse while percorre o arquivo desejado.
+        if(atual->prox == NULL){
+            printf("%d - %p\n", count, atual);
+            break;
+        }else{
+            printf("%d - %p\n", count, atual);
+            count++;
+            atual = atual->prox;
+        }
     }
 }
 
@@ -102,26 +96,32 @@ void remove_arq(lista *lista, char *arq){
     conteudo_buscado *arquivo = busca(lista, arq);
     no *atual = arquivo->inicial;
     no *aux;
-    if(arquivo->anterior){ //verificando se é o primeiro da lista
+    if(arquivo->anterior){ //verificando se não é o primeiro da lista
         aux = arquivo->anterior;
-        for(int i = 1; i < arquivo->tam; i++){
+        while(strcmp(atual->nome_do_arquivo,arq) == 0 && aux->prox != NULL){//esse while percorre o arquivo desejado.
+            aux->prox = atual->prox;
+            free(atual);
+            lista->tam--;
+            if(aux->prox == NULL){
+                lista->ret = aux;
+                break;
+            }
+            atual = aux->prox;
+        }
+    }else{
+        while(strcmp(atual->nome_do_arquivo,arq) == 0 && aux->prox != NULL){
             aux->prox = atual->prox;
             free(atual);
             atual = aux->prox;
             lista->tam--;
+            if(atual == NULL){
+                lista->cab = NULL;
+                lista->ret = NULL;
+                break;
+            }
+            lista->cab = atual;
         }
-
-    }else{
-        for(int i = 1; i < arquivo->tam; i++){
-            aux = atual->prox;
-            free(atual);
-            atual = aux;
-            lista->tam--;
-        }
-
-        lista->cab = atual;
     }
-    
 }
 
 void imprime(lista *lista) {

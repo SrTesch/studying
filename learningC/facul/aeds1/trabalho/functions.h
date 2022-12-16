@@ -13,7 +13,7 @@ void imprime(lista *lista);
 
 conteudo_buscado *busca(lista *lista, char *arq);
 
-void buscar_arq(lista *lista, char *arq);
+void imprimir_arq(lista *lista, char *arq);
 
 void remove_arq(lista *lista, char *arq);
 // essa função 

@@ -30,7 +30,7 @@ int main(){
             printf("Digite o nome do arquivo que deseja buscar: ");
             scanf("%s", nome_do_arquivo);
 
-            buscar_arq(&nova_lista, nome_do_arquivo);
+            imprimir_arq(&nova_lista, nome_do_arquivo);
             printf("tamanho da lista => %d\n", nova_lista.tam);
         }else if(whatToDo == 3){
             char nome_do_arquivo[30];
