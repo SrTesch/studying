@@ -6,16 +6,14 @@
 void inserirFim(lista *lista, char *valor, char *name);
 // eu sou lindo
 
-void leitura(lista *lista, char *arq);
+void leitura(lista *lista);
 // serhse
 
-void imprime(lista *lista);
 
 conteudo_buscado *busca(lista *lista, char *arq);
 
-void imprimir_arq(lista *lista, char *arq);
+void imprimir_arq(lista *lista);
 
-void remove_arq(lista *lista, char *arq);
+void remove_arq(lista *lista);
 // essa função 
-
-lista* criar_lista();
+void imprime(lista *lista);

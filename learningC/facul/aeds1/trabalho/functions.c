@@ -23,12 +23,17 @@ void inserirFim(lista *lista, char *valor, char *nome){
         lista->ret->prox = atual;
         lista->ret = atual;
     }
-    
     lista->tam++;
 }
 
 
-void leitura(lista *lista, char *arq){
+void leitura(lista *lista){
+    system("clear");
+
+    char arq[50];
+    printf("Digite o nome do arquivo que deseja inserir:\n");
+    scanf("%s", arq);
+
     FILE *textfile;
     char texto[MAX_LINE_LENGTH];
     textfile = fopen(arq, "r");
@@ -41,6 +46,8 @@ void leitura(lista *lista, char *arq){
     fclose(textfile);
 
     puts("Arquivo Inserido!");
+    printf("Tamanho atual da lista: %d\n", lista->tam);
+    
 }
 
 
@@ -48,16 +55,15 @@ conteudo_buscado *busca(lista *lista, char *arq){
     no *atual = lista->cab;
     no *inicial = NULL;
     no *anterior = NULL;
+    conteudo_buscado * conteudo = (conteudo_buscado *)malloc(sizeof(conteudo_buscado));
 
     if(atual == NULL){ // lista vazia
         puts("Lista Vazia! Insira algum arquivo para poder busca-lo");
-        return 0;
+        return conteudo;
     }
 
     while(strcmp(atual->nome_do_arquivo,arq) != 0){//while que verifica se chegou no nome do arquivo.
         if(atual->prox == NULL ){
-            puts("Arquivo Não Inserido!");
-            sleep(2);
             return 0;
         }
         anterior = atual;
@@ -67,32 +73,45 @@ conteudo_buscado *busca(lista *lista, char *arq){
 
     inicial = atual;
 
-    conteudo_buscado * conteudo = (conteudo_buscado *)malloc(sizeof(conteudo_buscado));
     conteudo->inicial = inicial;
     conteudo->anterior = anterior;
-    printf("Previous address=> %p\n", anterior);
     return conteudo;
 }
 
 
-void imprimir_arq(lista *lista, char *arq){
-    conteudo_buscado *arquivo = busca(lista, arq);
+void imprimir_arq(lista *lista){
+    system("clear");
+    
+    char arq[50];
+    printf("Digite o nome do arquivo que deseja buscar: ");
+    scanf("%s", arq);
 
-    no *atual = arquivo->inicial;
-    int count = 1;
-    while(strcmp(atual->nome_do_arquivo,arq) == 0){//esse while percorre o arquivo desejado.
-        if(atual->prox == NULL){
-            printf("%d - %p\n", count, atual);
-            break;
-        }else{
-            printf("%d - %p\n", count, atual);
-            count++;
-            atual = atual->prox;
+    conteudo_buscado *arquivo = busca(lista, arq);
+    if(arquivo != NULL){
+        no *atual = arquivo->inicial;
+        int count = 1;
+        while(strcmp(atual->nome_do_arquivo,arq) == 0){//esse while percorre o arquivo desejado.
+            if(atual->prox == NULL){
+                printf("%d - %p\n", count, atual);
+                break;
+            }else{
+                printf("%d - %p\n", count, atual);
+                count++;
+                atual = atual->prox;
+            }
         }
-    }
+        puts("");
+    }else
+        puts("Arquivo não encontrado!");
 }
 
-void remove_arq(lista *lista, char *arq){
+void remove_arq(lista *lista){
+    system("clear");
+
+    char arq[50];
+    scanf("%s", arq);
+    printf("Digite o nome do arquivo que deseja remover: ");
+
     conteudo_buscado *arquivo = busca(lista, arq);
     no *atual = arquivo->inicial;
     no *aux;
@@ -124,13 +143,15 @@ void remove_arq(lista *lista, char *arq){
     }
 }
 
-void imprime(lista *lista) {
+void imprime(lista *lista){
+    system("clear");
     no *cab = lista->cab;
     int count = 1;
     while(cab != NULL){
-        printf("Item - %d\nConteudo - %s\n", count, cab->conteudo);
-        printf("Nome do arquivo - %s\n", cab->nome_do_arquivo);
-        printf("Address - %p\n", cab);
+        printf("Nó - %d\n", count);
+        printf("  Nome do arquivo - %s\n", cab->nome_do_arquivo);
+        printf("  Endereço - %p\n", cab);
+        printf("  Conteudo - %s\n", cab->conteudo);
         cab = cab->prox;
         count++;
     }

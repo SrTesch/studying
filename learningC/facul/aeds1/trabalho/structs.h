@@ -19,5 +19,4 @@ typedef struct lista{
 typedef struct conteudo_buscado{
     no *inicial;
     no *anterior;
-    int tam;
 }conteudo_buscado;
