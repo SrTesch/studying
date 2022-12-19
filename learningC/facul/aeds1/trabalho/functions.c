@@ -109,8 +109,8 @@ void remove_arq(lista *lista){
     system("clear");
 
     char arq[50];
-    scanf("%s", arq);
     printf("Digite o nome do arquivo que deseja remover: ");
+    scanf("%s", arq);
 
     conteudo_buscado *arquivo = busca(lista, arq);
     no *atual = arquivo->inicial;
