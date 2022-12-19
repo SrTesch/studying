@@ -75,6 +75,8 @@ conteudo_buscado *busca(lista *lista, char *arq){
 
     conteudo->inicial = inicial;
     conteudo->anterior = anterior;
+    printf("inicial => %p ", inicial);
+    printf("anterior => %p", anterior);
     return conteudo;
 }
 
@@ -128,7 +130,8 @@ void remove_arq(lista *lista){
             atual = aux->prox;
         }
     }else{
-        while(strcmp(atual->nome_do_arquivo,arq) == 0 && aux->prox != NULL){
+        while(strcmp(atual->nome_do_arquivo,arq) == 0 && atual != NULL){
+            aux = atual;
             aux->prox = atual->prox;
             free(atual);
             atual = aux->prox;
@@ -138,8 +141,8 @@ void remove_arq(lista *lista){
                 lista->ret = NULL;
                 break;
             }
-            lista->cab = atual;
         }
+        lista->cab = atual;
     }
 }
 
