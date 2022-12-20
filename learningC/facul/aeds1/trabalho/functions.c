@@ -89,8 +89,13 @@ void imprimir_arq(lista *lista){
     scanf("%s", arq);
 
     conteudo_buscado *arquivo = busca(lista, arq);
+    no *atual = arquivo->inicial;
+
+    if(atual == NULL){
+        return;
+    }
+
     if(arquivo != NULL){
-        no *atual = arquivo->inicial;
         int count = 1;
         while(strcmp(atual->nome_do_arquivo,arq) == 0){//esse while percorre o arquivo desejado.
             if(atual->prox == NULL){
