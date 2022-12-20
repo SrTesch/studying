@@ -37,9 +37,10 @@ void leitura(lista *lista){
     FILE *textfile;
     char texto[MAX_LINE_LENGTH];
     textfile = fopen(arq, "r");
-    if(textfile == NULL)
+    if(textfile == NULL){
         printf("Arquivo vazio ou Não encontrado\n");
-    
+        return;
+    }
     while(fgets(texto, MAX_LINE_LENGTH, textfile)){
         inserirFim(lista, texto, arq);
     }
@@ -64,7 +65,8 @@ conteudo_buscado *busca(lista *lista, char *arq){
 
     while(strcmp(atual->nome_do_arquivo,arq) != 0){//while que verifica se chegou no nome do arquivo.
         if(atual->prox == NULL ){
-            return 0;
+            puts("Arquivo ainda não foi inserido na lista!");
+            return conteudo;
         }
         anterior = atual;
         atual = atual->prox;
@@ -75,8 +77,6 @@ conteudo_buscado *busca(lista *lista, char *arq){
 
     conteudo->inicial = inicial;
     conteudo->anterior = anterior;
-    printf("inicial => %p ", inicial);
-    printf("anterior => %p", anterior);
     return conteudo;
 }
 
@@ -103,8 +103,7 @@ void imprimir_arq(lista *lista){
             }
         }
         puts("");
-    }else
-        puts("Arquivo não encontrado!");
+    }
 }
 
 void remove_arq(lista *lista){
@@ -117,6 +116,10 @@ void remove_arq(lista *lista){
     conteudo_buscado *arquivo = busca(lista, arq);
     no *atual = arquivo->inicial;
     no *aux;
+    
+    if (atual == NULL){
+        return;
+    }
     if(arquivo->anterior){ //verificando se não é o primeiro da lista
         aux = arquivo->anterior;
         while(strcmp(atual->nome_do_arquivo,arq) == 0 && aux->prox != NULL){//esse while percorre o arquivo desejado.
