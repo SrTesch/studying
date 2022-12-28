@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/pedro/codecat/studying/learningC/facul/aeds1/trabalho",
-      "program": "/home/pedro/codecat/studying/learningC/facul/aeds1/trabalho/build/Debug/outDebug",
+      "cwd": "/home/pedro/codecat/studying/learningC/facul/aeds1",
+      "program": "/home/pedro/codecat/studying/learningC/facul/aeds1/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
