@@ -13,10 +13,10 @@ int main(){
 
         if(whatToDo == 1)
             inserir_arq(inicio);
-        //else if(whatToDo == 2)
-            //remover_arq(&inicio);
-        //else if(whatToDo == 3)
-            //imprimir_arq(&inicio);
+        else if(whatToDo == 2)
+            remover_arq(inicio);
+        else if(whatToDo == 3)
+            imprimir_arq(inicio);
         else if(whatToDo==4)
             imprimir_lista(inicio);
     }

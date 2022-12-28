@@ -12,4 +12,10 @@ noGeral *inserir(noGeral *atual, char *text, char *nome_arq);
 
 void inserir_arq(noGeral *inicio);
 
+noGeral *end_arq(noGeral *inicio, char *nome_arq);
+
+void remover_arq(noGeral *inicio);
+
+void imprimir_arq(noGeral *inicio);
+
 void imprimir_lista(noGeral *inicio);   

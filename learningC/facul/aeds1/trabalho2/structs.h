@@ -9,4 +9,3 @@ typedef struct __no_geral{
     struct __no_geral *prox;
     struct __no_geral *prox_arq;
 }noGeral;
-
