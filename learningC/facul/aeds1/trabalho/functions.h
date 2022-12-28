@@ -14,7 +14,7 @@ conteudo_buscado *busca(lista *lista, char *arq);
 
 void imprimir_arq(lista *lista);
 
-void buscar_termo(lista *lista)
+void buscar_termo(lista *lista);
 
 void remover_arq(lista *lista);
 // essa função 

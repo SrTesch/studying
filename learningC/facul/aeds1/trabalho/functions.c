@@ -115,7 +115,7 @@ void buscar_termo(lista *lista){
     system("clear");
 
     char arq[20];
-    printf('Digite o termo que deseja procurar: ');
+    printf("Digite o termo que deseja procurar: \n");
     scanf("%s", arq);
     
     no *atual = lista->cab;
@@ -128,22 +128,26 @@ void buscar_termo(lista *lista){
     }
 
     while(atual != NULL){
-        do{
-            indice = existe(ini->cont, termo, indice);
-            if(indice != -1)
-                contador++;
-        }while(indice != -1);
         
-        if(strcmp(atual->nome_do_arquivo, anterior->nome_do_arquivo) != 0 || atual->prox == NULL){
-            printf("%s - %d", anterior->nome_do_arquivo, contador);
+        if(strcmp(atual->nome_do_arquivo, anterior->nome_do_arquivo) != 0){ //aqui verifica se ta transicionando de arquivo... tem que printar o nome do anterior e o contador, mas nao pode esquecer de zerar o contador depois do print
+            printf("%s - %d\n", anterior->nome_do_arquivo, contador);
             contador = 0;
         }
 
+        do{
+            indice = existe(atual->conteudo, arq, indice);
+            printf("%d\n", indice);
+            if(indice != -1)
+                contador++;
+        }while(indice != -1);
+
+        if(atual->prox == NULL) //Esse if serve pra caso seja o ultimo arquivo da lista, ainda assim imprima!
+            printf("%s - %d\n", anterior->nome_do_arquivo, contador);
 
         indice = 0;
 
         anterior = atual;
-        atual = atual->prox
+        atual = atual->prox;
     }
 
 }
@@ -192,7 +196,6 @@ void remover_arq(lista *lista){
 }
 
 void imprimir_lista(lista *lista){
-    system("clear");
     no *cab = lista->cab;
     int count = 1;
     while(cab != NULL){

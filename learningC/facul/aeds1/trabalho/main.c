@@ -14,7 +14,7 @@ int main(){
 
     int whatToDo = 1;
     while(whatToDo != 0){
-        printf("0- Sair\n1- Inserir um item novo na lista\n2- Buscar arquivo\n3- Buscar termo específico\n 4- Remover arquivo\n5- Imprimir toda a lista\n");
+        printf("0- Sair\n1- Inserir um item novo na lista\n2- Buscar arquivo\n3- Buscar termo específico\n4- Remover arquivo\n5- Imprimir toda a lista\n");
         scanf("%d", &whatToDo);
 
         if(whatToDo == 1)
