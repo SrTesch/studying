@@ -8,14 +8,16 @@ int main(){
 
     int whatToDo = 1;
     while(whatToDo != 0){
-        printf("0- Sair\n1 - Inserir um item novo na lista\n2 - Remover Arquivo\n3 - Buscar Arquivo\n");
+        printf("0- Sair\n1 - Inserir um item novo na lista\n2 - Remover Arquivo\n3 - Buscar Arquivo\n4 - Imprimir lista inteira\n");
         scanf("%d", &whatToDo);
 
         if(whatToDo == 1)
-            inserir_arq(&inicio);
-        else if(whatToDo == 2)
-            remover_arq(&inicio);
-        else if(whatToDo == 3)
-            imprimir_arq(&inicio);
+            inserir_arq(inicio);
+        //else if(whatToDo == 2)
+            //remover_arq(&inicio);
+        //else if(whatToDo == 3)
+            //imprimir_arq(&inicio);
+        else if(whatToDo==4)
+            imprimir_lista(inicio);
     }
 }

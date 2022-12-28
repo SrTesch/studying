@@ -15,7 +15,7 @@ noGeral* criarLista(){
 
     for(int i = 0; i < 100; i++){
         noGeral *atual = (noGeral*)malloc(sizeof(noGeral)); // cria um novo nó
-        atual->indice = i;
+        atual->indice = 100 - i;
         atual->prox_arq = NULL;
 
         atual->prox = cab->prox;
@@ -25,23 +25,31 @@ noGeral* criarLista(){
     return cab;
 }
 
-void inserir(noGeral *inicio, char *text, char *nome_arq){
-    noGeral *atual = inicio;
-    noGeral *ultimo;
-    if(atual->conteudo){
-        atual = atual->prox;
-    }else{
-        strcpy(atual->conteudo, text);
-        strcpy(atual->nome_do_arquivo, nome_arq);
-        ultimo = atual; // marcando o  ultimo inserido
-    }
+noGeral *inserir(noGeral *inicio, char *text, char *nome_arq){
+    noGeral *atual = inicio->prox;
 
+//    if(atual == NULL){
+//        printf("Não foi possível inserir este arquivo");
+//        return;
+//    }
+    int x= 1;
+    while(x){
+        if(atual->nome_do_arquivo != NULL)
+            atual = atual->prox;
+        else
+            break;
+    }
+    strcpy(atual->conteudo, text);
+    strcpy(atual->nome_do_arquivo, nome_arq);
+    inicio->prox = atual;
+    return atual;
 }
 
 
 void inserir_arq(noGeral *inicio){
     system("clear");
 
+    noGeral *ultimo = inicio;
     char nome_arq[50];
     printf("Digite o nome do arquivo que deseja inserir:\n");
     scanf("%s", nome_arq);
@@ -54,9 +62,22 @@ void inserir_arq(noGeral *inicio){
         return;
     }
     while(fgets(texto, 50, textfile)){
-        inserir(inicio, texto, nome_arq);
+        ultimo = inserir(ultimo, texto, nome_arq);
+        //if(ultimo == -1){}
     }
     fclose(textfile);
 
     puts("Arquivo Inserido!");
+}
+
+void imprimir_lista(noGeral *inicio){
+    noGeral *atual = inicio;
+    while(atual != NULL){
+        printf("Nó - %d\n", atual->indice);
+        printf("  Nome do arquivo - %s\n", atual->nome_do_arquivo);
+        printf("  Endereço - %p\n", atual);
+        printf("  Conteudo - %s\n", atual->conteudo);
+        atual = atual->prox;
+    }
+    printf("\n");
 }

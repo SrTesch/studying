@@ -6,6 +6,10 @@
 
 void gotoxy(int x,int y); // esta função serve pra alterar a posição do cursor no terminal, possibilitando certas costumizações no menu
 
-noGeral* criarLista();
+noGeral *criarLista();
 
-void inserir(noGeral *atual, char *text, char *nome_arq);
+noGeral *inserir(noGeral *atual, char *text, char *nome_arq);
+
+void inserir_arq(noGeral *inicio);
+
+void imprimir_lista(noGeral *inicio);   
