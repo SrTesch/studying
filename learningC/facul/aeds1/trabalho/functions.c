@@ -111,7 +111,44 @@ void imprimir_arq(lista *lista){
     }
 }
 
-void remove_arq(lista *lista){
+void buscar_termo(lista *lista){
+    system("clear");
+
+    char arq[20];
+    printf('Digite o termo que deseja procurar: ');
+    scanf("%s", arq);
+    
+    no *atual = lista->cab;
+    no *anterior = lista->cab;
+    int contador = 0, indice = 0;
+
+    if(atual == NULL){
+        printf("Parece que a lista ainda está vazia!\nInsira algum arquivo antes de procurar algum termo!\n");
+        return;
+    }
+
+    while(atual != NULL){
+        do{
+            indice = existe(ini->cont, termo, indice);
+            if(indice != -1)
+                contador++;
+        }while(indice != -1);
+        
+        if(strcmp(atual->nome_do_arquivo, anterior->nome_do_arquivo) != 0 || atual->prox == NULL){
+            printf("%s - %d", anterior->nome_do_arquivo, contador);
+            contador = 0;
+        }
+
+
+        indice = 0;
+
+        anterior = atual;
+        atual = atual->prox
+    }
+
+}
+
+void remover_arq(lista *lista){
     system("clear");
 
     char arq[50];
@@ -154,7 +191,7 @@ void remove_arq(lista *lista){
     }
 }
 
-void imprime(lista *lista){
+void imprimir_lista(lista *lista){
     system("clear");
     no *cab = lista->cab;
     int count = 1;
@@ -168,4 +205,18 @@ void imprime(lista *lista){
     }
     printf("Tamanho da lista: %d\n", lista->tam);
     printf("\n");
+}
+
+int existe(char *str1, char *str2, int indice){
+    int i, aux = 0;
+
+    for(i = indice; i < strlen(str1); i++){
+        if(str1[i] == str2[aux])
+            aux++;
+        else
+            aux = 0;
+        if(aux == strlen(str2))
+            return i;
+    }
+    return -1;
 }
