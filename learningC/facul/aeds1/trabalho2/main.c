@@ -5,16 +5,21 @@
 
 int main(){
     noGeral *inicio = criarLista();
-
-    int whatToDo = 1;
+    int espaços_livres = MAX_LIST_LENGHT;
+    int whatToDo = 1, alterados;
     while(whatToDo != 0){
-        printf("0- Sair\n1 - Inserir um item novo na lista\n2 - Remover Arquivo\n3 - Buscar Arquivo\n4 - Imprimir lista inteira\n");
+        system("clear");
+        printf("\x1b[1;36m0- Sair\n1 - Inserir um item novo na lista\n2 - Remover Arquivo\n3 - Buscar Arquivo\n4 - Imprimir lista inteira\n");
         scanf("%d", &whatToDo);
 
-        if(whatToDo == 1)
-            inserir_arq(inicio);
-        else if(whatToDo == 2)
+        if(whatToDo == 1){
+            alterados = ler_arq(inicio, espaços_livres);
+            espaços_livres -= alterados;
+        }
+        else if(whatToDo == 2){
             remover_arq(inicio);
+            espaços_livres += alterados;
+        }
         else if(whatToDo == 3)
             imprimir_arq(inicio);
         else if(whatToDo==4)

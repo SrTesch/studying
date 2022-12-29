@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define MAX_LIST_LENGHT 500
 
 typedef struct __no_geral{
     int indice;
