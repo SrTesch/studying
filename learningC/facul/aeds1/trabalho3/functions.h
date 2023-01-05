@@ -8,16 +8,16 @@ void gotoxy(int x,int y); // esta função serve pra alterar a posição do curs
 
 void enterVoltar(); //esta função serve pra pessoa apertar enter quando quiser voltar para o menu principal
 
-no *criarLista();
+no **criarLista();
 
-no *inserir(no *atual, char *text, char *nome_arq);
+int inserir(int inicio, char *text, no ** lista);
 
-int ler_arq(no *inicio, int espaços_livres);
+int ler_arq(no **inicio, int espaços_livres, arquivo ** lista_arq);
 
-no *end_arq(no *inicio, char *nome_arq);
+int end_arq(arquivo ** lista_arq, char arq);
 
-int remover_arq(no *inicio);
+int remover_arq(arquivo ** lista_arq, no **lista);
 
-void imprimir_arq(no *inicio);
+void imprimir_arq(arquivo ** lista_arq, no **lista);
 
-void imprimir_lista(no *inicio);   
+void imprimir_lista(arquivo ** lista_arq, no ** lista);  

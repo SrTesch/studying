@@ -9,7 +9,7 @@ typedef struct __no_geral{
 }no;
 
 typedef struct __arquivo{
-    int num_blocos; //tamanho do arquivo na lista
     char nome_do_arquivo[30]; 
-    no * inicio; //marcando o inicio do arquivo
+    int inicio; //marcando o inicio do arquivo
+    int num_blocos; //tamanho do arquivo na lista
 }arquivo;
