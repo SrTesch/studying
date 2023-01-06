@@ -19,25 +19,28 @@ no ** criarLista(){
     no **fs = malloc(sizeof(no *) * MAX_LIST_LENGHT);
 
     for(int i = 0; i < MAX_LIST_LENGHT; i++){
-        fs[i] = malloc(sizeof(no)); // cria um novo nó
+        fs[i] = (no *) malloc(sizeof(no)); // cria um novo nó
+        strcpy(fs[i]->conteudo, "");
         fs[i]->prox_arq = -1;
     }
     return fs;
 }
 
 int inserir(int inicio, char *text, no ** lista){
-    int aux = inicio + 1;
-    
-    while(strcmp(lista[aux]->conteudo, "") != 0){
+    puts("-------Entrou no inserir-------");
+    int aux = inicio;
+    puts("teste pré while");
+    while(lista[aux] != NULL && strcmp(lista[aux]->conteudo, "") != 0){
+        printf("aux => %d\nteste strcmp", aux);
         aux++;
     }
-
+    puts(".passou do while.");
     strcpy(lista[aux]->conteudo, text);
     lista[inicio]->prox_arq = aux; 
     return aux;
 }
 
-int ler_arq(no **lista, int espaços_livres, arquivo ** lista_arq){
+int ler_arq(no **lista, int espacos_livres, arquivo ** lista_arq){
     system("clear");
     int inicial = 0, ultimo = 0, inseridos = 0;
 
@@ -59,7 +62,8 @@ int ler_arq(no **lista, int espaços_livres, arquivo ** lista_arq){
     while(fgets(texto, 60, textfile))
         tam_arq++;
     
-    if(tam_arq > espaços_livres){
+    printf("tamanho do arquivo => %d\n", tam_arq);
+    if(tam_arq > espacos_livres){
         printf("\x1B[1;31mInfelizmente não há mais espaços livres ou o arquivo é muito grande!\nTente apagar algum outro arquivo antes!\n");
         enterVoltar();
         return 0;
@@ -76,64 +80,65 @@ int ler_arq(no **lista, int espaços_livres, arquivo ** lista_arq){
     fclose(textfile);
 
     /* Nesta parte o arquivo está sendo inserido na lista de arquivos com todos os seus metadados! */
-    for(int i = 0; i < 100; i++){
-        if(lista_arq[i] == NULL){    
-            lista_arq[i] = malloc(sizeof(arquivo)); //criando um novo nó
-            strcpy(lista_arq[i]->nome_do_arquivo, arq);
-            lista_arq[i]->inicio = inicial;
-            lista_arq[i]->num_blocos = tam_arq;
-            break;
-        }
-    }
+    int i = 0;
+    while(lista_arq[i] != NULL)
+        i++;
+
+    lista_arq[i] = (arquivo *) malloc(sizeof(arquivo)); //criando um novo nó
+    strcpy(lista_arq[i]->nome_do_arquivo, arq);
+    printf("nome do arquivo inserido => %s\n", lista_arq[0]->nome_do_arquivo);
+    lista_arq[i]->inicio = inicial;
+    printf("Inicio do arquivo inserido => %d\n", lista_arq[0]->inicio);
+    lista_arq[i]->num_blocos = tam_arq;
 
     puts("\x1b[1;33mArquivo Inserido!\x1b[1;36m");
     enterVoltar();
     return inseridos;
 }
 
-int end_arq(arquivo ** lista_arq, char arq){
-    int começo;
+int end_arq(arquivo ** lista_arq, char * arq){
+    int comeco;
     for(int i = 0; i < 100; i++){
-        if(strcmp(lista_arq[i]->nome_do_arquivo, &arq) == 0){
-            começo = lista_arq[i]->inicio;
-            return começo;
+        if(lista_arq[i] != NULL && strcmp(lista_arq[i]->nome_do_arquivo, arq) == 0){
+            comeco = lista_arq[i]->inicio;
+            return comeco;
         }
     }
-    printf("Poxa, parece que este arquivo ainda não foi inserido."); // caso o arquivo nao tenha sido inserido ainda
+    printf("Poxa, parece que este arquivo ainda não foi inserido.");
     return -1;
 }
 
 int remover_arq(arquivo ** lista_arq, no **lista){
     system("clear");
     int removidos = 0;
-    int começo, anterior, tamanho_arq;
+    int comeco, anterior, tamanho_arq;
     char arq[50];
     printf("Digite o nome do arquivo que deseja remover: ");
     scanf("%s", arq);
     
-    começo = end_arq(lista_arq, &arq);
-    if(começo == -1){
-        printf("Parece que este arquivo ainda não foi inserido\n");
-        return removidos;
-    }
-
     int aux;
     for(int i = 0; i < 100; i++){
-        if(strcmp(lista_arq[i]->nome_do_arquivo, arq) == 0){
+        if(lista_arq[i] != NULL && strcmp(lista_arq[i]->nome_do_arquivo, arq) == 0){
             aux = i;
             break;
         }
     }
+
+    tamanho_arq = lista_arq[aux]->num_blocos;
+    comeco = end_arq(lista_arq, arq);
+    if(comeco == -1)
+        return removidos;
     
     for(int j = 0; j < tamanho_arq; j++){
-        strcpy(lista[começo]->conteudo, "");
-        anterior = começo;
-        começo = lista[começo]->prox_arq;
+        strcpy(lista[comeco]->conteudo, "");
+        anterior = comeco;
+        comeco = lista[comeco]->prox_arq;
         lista[anterior]->prox_arq = -1;
         removidos++;
     }
 
-    lista_arq[aux] == NULL;
+
+    lista_arq[aux] = NULL;
     printf("\x1b[1;33mArquivo Removido!\x1b[1;36m");
     enterVoltar();
     return removidos;
@@ -145,13 +150,25 @@ void imprimir_arq(arquivo ** lista_arq, no **lista){
     printf("Digite o nome do arquivo que deseja buscar: ");
     scanf("%s", arq);
 
-    int começo = end_arq(lista_arq, &arq);
-    int tamanho_arq = lista_arq[começo]->num_blocos;
+    int comeco = end_arq(lista_arq, arq);
+    if(comeco == -1)
+        return;
+
+    int tamanho_arq;
+    int aux;
+    for(int i = 0; i < 100; i++){
+        if(lista_arq[i] != NULL && strcmp(lista_arq[i]->nome_do_arquivo, arq) == 0){
+            aux = i;
+            break;
+        }
+    }
+
+    tamanho_arq = lista_arq[aux]->num_blocos;
     for(int i = 0; i < tamanho_arq; i++){
         printf("\x1B[1;33mBloco nº%d\n", i);
-        printf("  Conteúdo=> %s\n", lista[começo]->conteudo);
-        printf("  Endereço de memória=> %p\n", lista[começo]);
-        começo = lista[começo]->prox_arq;
+        printf("  Conteúdo=> %s\n", lista[comeco]->conteudo);
+        printf("  Endereço de memória=> %p\n", lista[comeco]);
+        comeco = lista[comeco]->prox_arq;
     }
 
     printf("\nOcupa %d Blocos\n\x1b[1;36m", tamanho_arq);
@@ -169,11 +186,64 @@ void imprimir_lista(arquivo ** lista_arq, no ** lista){
     puts("Arquivos inseridos:");
     puts("Nome do Arquivo - Inicio - Tamanho");
 
-    int aux = 0;
-    while(strcmp(lista_arq[aux]->nome_do_arquivo, "") == 0 ){
-        printf("%s - %d - %d\n", lista_arq[aux]->nome_do_arquivo, lista_arq[aux]->inicio, lista_arq[aux]->num_blocos);
-        aux++;
+    for(int j = 0; j < 100; j++){
+        if(lista_arq[j] == NULL)
+            break;
+        
+        printf("%s - %d - %d\n", lista_arq[j]->nome_do_arquivo, lista_arq[j]->inicio, lista_arq[j]->num_blocos);
+        
     }
     printf("\n");
     enterVoltar();
+}
+
+void buscar_termo(arquivo ** lista_arq, no ** lista){
+    system("clear");
+
+    char termo[20];
+    printf("Digite o arq que deseja procurar: \n");
+    scanf("%s", termo);
+
+    int indice = 0;
+
+    if(lista_arq[0] == NULL){
+        printf("Parece que a lista ainda está vazia!\nInsira algum arquivo antes de procurar algum arq!\n");
+        return;
+    }
+
+    int arq_atual = 0, atual;
+    while(lista_arq[arq_atual] != NULL){
+        printf("entrou no arquivo %s\n", lista_arq[arq_atual]->nome_do_arquivo);
+        atual = lista_arq[arq_atual]->inicio;
+        printf("indice inicial => %d\n", atual);
+        int tamanho_arq = lista_arq[arq_atual]->num_blocos;
+        int contador = 0;
+        for(int i = 0; i < tamanho_arq; i++){
+            do{
+                indice = existe(lista[atual]->conteudo, termo, indice);
+                printf("%d\n", indice);
+                if(indice != -1)
+                    contador++;
+            }while(indice != -1);
+            atual = lista[atual]->prox_arq;
+        }
+        printf("%s - %d\n", lista_arq[arq_atual]->nome_do_arquivo, contador);
+
+        indice = 0;
+        arq_atual++;
+    }
+}
+
+int existe(char *str1, char *str2, int indice){
+    int i, aux = 0;
+
+    for(i = indice; i < strlen(str1); i++){
+        if(str1[i] == str2[aux])
+            aux++;
+        else
+            aux = 0;
+        if(aux == strlen(str2))
+            return i;
+    }
+    return -1;
 }
