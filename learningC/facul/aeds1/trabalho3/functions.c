@@ -4,10 +4,6 @@
 #include "functions.h"
 #include <unistd.h>
 
-void gotoxy(int x,int y){
-    printf("%c[%d;%df",0x1B,y,x);
-}
-
 void enterVoltar() {
     char aux;
     printf("\nPressione ENTER para voltar.");
@@ -31,7 +27,6 @@ int inserir(int inicio, char *text, no ** lista){
     int aux = inicio;
     puts("teste pré while");
     while(lista[aux] != NULL && strcmp(lista[aux]->conteudo, "") != 0){
-        printf("aux => %d\nteste strcmp", aux);
         aux++;
     }
     puts(".passou do while.");
@@ -62,7 +57,6 @@ int ler_arq(no **lista, int espacos_livres, arquivo ** lista_arq){
     while(fgets(texto, 60, textfile))
         tam_arq++;
     
-    printf("tamanho do arquivo => %d\n", tam_arq);
     if(tam_arq > espacos_livres){
         printf("\x1B[1;31mInfelizmente não há mais espaços livres ou o arquivo é muito grande!\nTente apagar algum outro arquivo antes!\n");
         enterVoltar();
@@ -86,9 +80,7 @@ int ler_arq(no **lista, int espacos_livres, arquivo ** lista_arq){
 
     lista_arq[i] = (arquivo *) malloc(sizeof(arquivo)); //criando um novo nó
     strcpy(lista_arq[i]->nome_do_arquivo, arq);
-    printf("nome do arquivo inserido => %s\n", lista_arq[0]->nome_do_arquivo);
     lista_arq[i]->inicio = inicial;
-    printf("Inicio do arquivo inserido => %d\n", lista_arq[0]->inicio);
     lista_arq[i]->num_blocos = tam_arq;
 
     puts("\x1b[1;33mArquivo Inserido!\x1b[1;36m");
@@ -137,7 +129,7 @@ int remover_arq(arquivo ** lista_arq, no **lista){
         removidos++;
     }
 
-
+    free(lista_arq[aux]);
     lista_arq[aux] = NULL;
     printf("\x1b[1;33mArquivo Removido!\x1b[1;36m");
     enterVoltar();
@@ -190,10 +182,9 @@ void imprimir_lista(arquivo ** lista_arq, no ** lista){
         if(lista_arq[j] == NULL)
             break;
         
-        printf("%s - %d - %d\n", lista_arq[j]->nome_do_arquivo, lista_arq[j]->inicio, lista_arq[j]->num_blocos);
+        printf("%s - %d - %d\n\n", lista_arq[j]->nome_do_arquivo, lista_arq[j]->inicio, lista_arq[j]->num_blocos);
         
     }
-    printf("\n");
     enterVoltar();
 }
 
@@ -213,7 +204,6 @@ void buscar_termo(arquivo ** lista_arq, no ** lista){
 
     int arq_atual = 0, atual;
     while(lista_arq[arq_atual] != NULL){
-        printf("entrou no arquivo %s\n", lista_arq[arq_atual]->nome_do_arquivo);
         atual = lista_arq[arq_atual]->inicio;
         printf("indice inicial => %d\n", atual);
         int tamanho_arq = lista_arq[arq_atual]->num_blocos;
