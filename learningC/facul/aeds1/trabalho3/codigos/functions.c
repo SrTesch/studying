@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "functions.h"
+#include "../headers/functions.h"
 #include <unistd.h>
 
 void enterVoltar() {
@@ -23,13 +23,10 @@ no ** criarLista(){
 }
 
 int inserir(int inicio, char *text, no ** lista){
-    puts("-------Entrou no inserir-------");
     int aux = inicio;
-    puts("teste pré while");
     while(lista[aux] != NULL && strcmp(lista[aux]->conteudo, "") != 0){
         aux++;
     }
-    puts(".passou do while.");
     strcpy(lista[aux]->conteudo, text);
     lista[inicio]->prox_arq = aux; 
     return aux;
@@ -42,13 +39,17 @@ int ler_arq(no **lista, int espacos_livres, arquivo ** lista_arq){
     char arq[60];
     printf("Digite o nome do arquivo que deseja inserir:\n");
     scanf("%s", arq);
-
+    int aux = end_arq(lista_arq, arq);
+    if(aux != -1){
+        printf("\x1b[1;31mOpa!! Parece que este arquivo já foi inserido. Não é possível inserir o mesmo arquivo duas vezes!\n\x1b[1;36m");
+        return 0;
+    }
     
     FILE *textfile;
     char texto[60];
     textfile = fopen(arq, "r");
     if(textfile == NULL){
-        printf("Arquivo vazio ou Não encontrado\n");
+        printf("\x1b[1;31mArquivo vazio ou Não encontrado\n\x1b[1;36m");
         enterVoltar();
         return 0;
     }
@@ -96,7 +97,8 @@ int end_arq(arquivo ** lista_arq, char * arq){
             return comeco;
         }
     }
-    printf("Poxa, parece que este arquivo ainda não foi inserido.");
+    printf("\x1b[1;31mPoxa! Parece que este arquivo ainda não foi inserido.\n\x1b[1;36m");
+    enterVoltar();
     return -1;
 }
 
@@ -157,7 +159,7 @@ void imprimir_arq(arquivo ** lista_arq, no **lista){
 
     tamanho_arq = lista_arq[aux]->num_blocos;
     for(int i = 0; i < tamanho_arq; i++){
-        printf("\x1B[1;33mBloco nº%d\n", i);
+        printf("\x1B[1;33mBloco nº%d\n", comeco);
         printf("  Conteúdo=> %s\n", lista[comeco]->conteudo);
         printf("  Endereço de memória=> %p\n", lista[comeco]);
         comeco = lista[comeco]->prox_arq;
@@ -174,7 +176,7 @@ void imprimir_lista(arquivo ** lista_arq, no ** lista){
         printf("  Endereço - %p\n", lista[i]);
         printf("  Conteudo - %s\n", lista[i]->conteudo);
     }
-    
+    printf("\n\n");
     puts("Arquivos inseridos:");
     puts("Nome do Arquivo - Inicio - Tamanho");
 
@@ -182,7 +184,7 @@ void imprimir_lista(arquivo ** lista_arq, no ** lista){
         if(lista_arq[j] == NULL)
             break;
         
-        printf("%s - %d - %d\n\n", lista_arq[j]->nome_do_arquivo, lista_arq[j]->inicio, lista_arq[j]->num_blocos);
+        printf("%s - %d - %d\n", lista_arq[j]->nome_do_arquivo, lista_arq[j]->inicio, lista_arq[j]->num_blocos);
         
     }
     enterVoltar();
@@ -192,33 +194,33 @@ void buscar_termo(arquivo ** lista_arq, no ** lista){
     system("clear");
 
     char termo[20];
-    printf("Digite o arq que deseja procurar: \n");
+    printf("Digite o termo que deseja procurar: \n");
     scanf("%s", termo);
 
     int indice = 0;
 
     if(lista_arq[0] == NULL){
-        printf("Parece que a lista ainda está vazia!\nInsira algum arquivo antes de procurar algum arq!\n");
+        printf("\x1B[1;31mParece que a lista ainda está vazia!\nInsira algum arquivo antes de procurar algum termo!\x1B[1;36m\n");
         return;
     }
 
     int arq_atual = 0, atual;
+    puts("\x1B[1;33mNome do arquivo - Ocorrências");
     while(lista_arq[arq_atual] != NULL){
         atual = lista_arq[arq_atual]->inicio;
-        printf("indice inicial => %d\n", atual);
         int tamanho_arq = lista_arq[arq_atual]->num_blocos;
         int contador = 0;
         for(int i = 0; i < tamanho_arq; i++){
             do{
                 indice = existe(lista[atual]->conteudo, termo, indice);
-                printf("%d\n", indice);
                 if(indice != -1)
                     contador++;
             }while(indice != -1);
             atual = lista[atual]->prox_arq;
         }
         printf("%s - %d\n", lista_arq[arq_atual]->nome_do_arquivo, contador);
-
+        puts("\x1B[1;36m");
+        enterVoltar();
         indice = 0;
         arq_atual++;
     }

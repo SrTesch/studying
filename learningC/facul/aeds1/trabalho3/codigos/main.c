@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "functions.h"
+#include "../headers/functions.h"
 
 int main(){
     no** lista = criarLista();
@@ -13,6 +13,7 @@ int main(){
 
 
     while(whatToDo != 0){
+        system("clear");
         printf("\x1b[1;36m0- Sair\n1 - Inserir um item novo na lista\n2 - Remover Arquivo\n3 - Buscar Arquivo\n4 - Imprimir lista inteira\n5 - Buscar termo\n");
         scanf("%d", &whatToDo);
 
