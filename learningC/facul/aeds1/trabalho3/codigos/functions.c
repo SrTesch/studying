@@ -42,6 +42,7 @@ int ler_arq(no **lista, int espacos_livres, arquivo ** lista_arq){
     int aux = end_arq(lista_arq, arq);
     if(aux != -1){
         printf("\x1b[1;31mOpa!! Parece que este arquivo já foi inserido. Não é possível inserir o mesmo arquivo duas vezes!\n\x1b[1;36m");
+        enterVoltar();
         return 0;
     }
     
@@ -97,8 +98,6 @@ int end_arq(arquivo ** lista_arq, char * arq){
             return comeco;
         }
     }
-    printf("\x1b[1;31mPoxa! Parece que este arquivo ainda não foi inserido.\n\x1b[1;36m");
-    enterVoltar();
     return -1;
 }
 
@@ -120,8 +119,11 @@ int remover_arq(arquivo ** lista_arq, no **lista){
 
     tamanho_arq = lista_arq[aux]->num_blocos;
     comeco = end_arq(lista_arq, arq);
-    if(comeco == -1)
+    if(comeco == -1){
+        printf("\x1b[1;31mPoxa! Parece que este arquivo ainda não foi inserido.\n\x1b[1;36m");
+        enterVoltar();
         return removidos;
+    }
     
     for(int j = 0; j < tamanho_arq; j++){
         strcpy(lista[comeco]->conteudo, "");
@@ -145,9 +147,11 @@ void imprimir_arq(arquivo ** lista_arq, no **lista){
     scanf("%s", arq);
 
     int comeco = end_arq(lista_arq, arq);
-    if(comeco == -1)
+    if(comeco == -1){
+        printf("\x1b[1;31mPoxa! Parece que este arquivo ainda não foi inserido.\n\x1b[1;36m");
+        enterVoltar();
         return;
-
+    }
     int tamanho_arq;
     int aux;
     for(int i = 0; i < 100; i++){
@@ -219,11 +223,11 @@ void buscar_termo(arquivo ** lista_arq, no ** lista){
             atual = lista[atual]->prox_arq;
         }
         printf("%s - %d\n", lista_arq[arq_atual]->nome_do_arquivo, contador);
-        puts("\x1B[1;36m");
-        enterVoltar();
         indice = 0;
         arq_atual++;
     }
+    puts("\x1B[1;36m");
+    enterVoltar();
 }
 
 int existe(char *str1, char *str2, int indice){
