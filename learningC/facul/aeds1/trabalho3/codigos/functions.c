@@ -117,13 +117,13 @@ int remover_arq(arquivo ** lista_arq, no **lista){
         }
     }
 
-    tamanho_arq = lista_arq[aux]->num_blocos;
     comeco = end_arq(lista_arq, arq);
     if(comeco == -1){
         printf("\x1b[1;31mPoxa! Parece que este arquivo ainda não foi inserido.\n\x1b[1;36m");
         enterVoltar();
         return removidos;
     }
+    tamanho_arq = lista_arq[aux]->num_blocos;
     
     for(int j = 0; j < tamanho_arq; j++){
         strcpy(lista[comeco]->conteudo, "");

@@ -32,5 +32,4 @@ int main(){
         else if(whatToDo == 5)
             buscar_termo(lista_arq, lista);
     }
-
 }
