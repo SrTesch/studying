@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct no{
-    int c;
-    struct no *prox;
+typedef struct __no{
+    int conteudo;
+    struct __no *prox;
 }no;
 
 
