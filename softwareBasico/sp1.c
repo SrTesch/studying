@@ -81,7 +81,7 @@ int main(int argc, char * argv[]){
 
         switch(opcode){
         case load_mem:
-            acc = mem[operand];
+            acc = memory[operand];
             updateSTAT(&stat, acc, zeroacc);
             pc++;
         break;
@@ -93,41 +93,41 @@ int main(int argc, char * argv[]){
 			break;
 
 		case store:
-			mem[operand] = acc;
+			memmory[operand] = acc;
 
 			pc++;
 			break;
 
 		case add:
 			// checks for carry
-			if ((int)(acc + mem[operand]) > 255)
+			if ((int)(acc + memory[operand]) > 255)
 			    uptadeSTAT(&stat, acc, carry);
 			else
                 uptadeSTAT(&stat, acc, 0);
 
-			acc += mem[operand];
+			acc += memory[operand];
 			pc++;
 			break;
 
 		case sub:
-			acc -= mem[operand];
+			acc -= memory[operand];
 			updateSTAT(&stat, acc, 0);
 			pc++;
 			break;
 
 		case mul:
 			// checks for overflow
-			if ((int)(acc * mem[operand]) > 255)
+			if ((int)(acc * memory[operand]) > 255)
 			    uptadeSTAT(&stat, acc, overflow);
 			else
                 uptadeSTAT(&stat, acc, 0);
 
-			acc *= mem[operand];
+			acc *= memory[operand];
 			pc++;
 			break;
 
 		case div:
-			acc /= mem[operand];
+			acc /= memory[operand];
 			updateSTAT(&stat, acc, 0);
 			pc++;
 			break;
@@ -150,13 +150,13 @@ int main(int argc, char * argv[]){
 			break;
 
 		case and:
-			acc &= mem[operand];
+			acc &= memory[operand];
 			updateSTAT(&stat, acc, 0);
 			pc++;
 			break;
 
 		case or:
-			acc |= mem[operand];
+			acc |= memory[operand];
 			updateSTAT(&stat, acc, 0);
 			pc++;
 			break;
@@ -214,7 +214,7 @@ int main(int argc, char * argv[]){
 			break;
 
 		case hlt:
-			printf("ACC: %d\nSTAT: %.2X\n", acc, STAT);
+			printf("ACC: %d\nSTAT: %.2X\n", acc, stat);
             break;
         }
     }
