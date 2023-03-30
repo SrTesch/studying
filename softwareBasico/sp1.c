@@ -93,17 +93,16 @@ int main(int argc, char * argv[]){
 			break;
 
 		case store:
-			memmory[operand] = acc;
-
+			memory[operand] = acc;
 			pc++;
 			break;
 
 		case add:
 			// checks for carry
 			if ((int)(acc + memory[operand]) > 255)
-			    uptadeSTAT(&stat, acc, carry);
+			    updateSTAT(&stat, acc, carry);
 			else
-                uptadeSTAT(&stat, acc, 0);
+                updateSTAT(&stat, acc, 0);
 
 			acc += memory[operand];
 			pc++;
@@ -118,9 +117,9 @@ int main(int argc, char * argv[]){
 		case mul:
 			// checks for overflow
 			if ((int)(acc * memory[operand]) > 255)
-			    uptadeSTAT(&stat, acc, overflow);
+			    updateSTAT(&stat, acc, overflow);
 			else
-                uptadeSTAT(&stat, acc, 0);
+                updateSTAT(&stat, acc, 0);
 
 			acc *= memory[operand];
 			pc++;
@@ -135,9 +134,9 @@ int main(int argc, char * argv[]){
 		case inc:
 			// checks for carry
 			if ((int)(acc + 1) > 255)
-			    uptadeSTAT(&stat, acc, carry);
+			    updateSTAT(&stat, acc, carry);
 			else
-                uptadeSTAT(&stat, acc, 0);
+                updateSTAT(&stat, acc, 0);
 
 			++acc;
 			pc++;

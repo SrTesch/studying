@@ -45,13 +45,11 @@ int main(){
 	qsort(vi, contImpar, 4, valoresImpares);
 	
 	//printando os valores
-	for(int i=0; i < contPar; ++i){
+	for(int i=0; i < contPar; ++i)
 		printf("%d\n", vp[i]);
-	} 
 	
-	for(int i = 0; i <contImpar; ++i){
+	for(int i = 0; i <contImpar; ++i)
 		printf("%d\n", vi[i]);
-	}
 	return 0;
 }
 
