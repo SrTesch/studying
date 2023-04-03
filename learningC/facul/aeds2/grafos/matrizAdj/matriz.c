@@ -60,6 +60,7 @@ void imprimaMatriz(int vertices, int matriz[vertices][vertices]){
 }
 
 void loop(int v, int matriz[v][v]){
+    puts("");
     int x = 0;
     for(int i = 0; i < v; i++){
         if(matriz[i][i] != 0){
@@ -80,6 +81,7 @@ int grauDoNoX(int vertices, int matriz[vertices][vertices], int x){
 }
 
 void imprimeGraus(int vertices, int matriz[vertices][vertices]){
+    puts("");
     int retorno, max, min;
     for(int i = 0; i < vertices; i++){
         retorno = grauDoNoX(vertices, matriz, i);
@@ -100,6 +102,7 @@ void imprimeGraus(int vertices, int matriz[vertices][vertices]){
 }
 
 void imprimePesos(int v, int matriz[v][v]){
+    puts("");
     int contador, maior, menor;
     for(int i = 0; i < v; i++){
         contador = 0;
@@ -110,7 +113,8 @@ void imprimePesos(int v, int matriz[v][v]){
     }
 }
 
-void verificaArestas(int v, int matriz[v][v]){
+void verificaParalelas(int v, int matriz[v][v]){
+    puts("");
     int contador = 0;
     for(int i = 0; i < v; i++){
         for(int j = 0; j < v; j++){
@@ -127,6 +131,7 @@ void verificaArestas(int v, int matriz[v][v]){
 }
 
 void verificaIsolados(int v, int matriz[v][v]){
+    puts("");
     int cont, total = 0, isolados[v];
     for(int i = 0; i < v; i++){
         cont = 0;
@@ -193,13 +198,9 @@ int main(){
     //incialização
     iniciaELe(vertices, arestas, tipo, matriz, matrizPonderada);
     imprimaMatriz(vertices, matriz);
-    puts("");
     loop(vertices, matriz);
-    puts("");
-    verificaArestas(vertices, matriz);
-    puts("");
+    verificaParalelas(vertices, matriz);
     verificaIsolados(vertices, matriz);
-    puts("");
     // grauDoNoX(vertices, matriz, x);
     imprimeGraus(vertices, matriz);
     puts("");

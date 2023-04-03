@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 typedef struct __no{
-    int conteudo;
+    int c;
     struct __no *prox;
 }no;
 

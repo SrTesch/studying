@@ -1,0 +1,29 @@
+0 1 1 1 0
+1 0 1 1 0
+1 1 0 1 0
+1 1 1 0 0
+0 0 0 0 0
+
+Não há loops
+
+Não há arestas paralelas
+
+Os vértices abaixo são isolados:
+5
+Total: 1
+
+Vértice 1 tem grau 3
+Vértice 2 tem grau 3
+Vértice 3 tem grau 3
+Vértice 4 tem grau 3
+Vértice 5 tem grau 0
+
+Grau máximo: 3
+Grau mínimo: 0
+
+Grafo não completo
+Grafo não regular
+
+O caminho não é elementar
+O caminho não é um ciclo
+O caminho não é um trajeto
