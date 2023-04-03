@@ -1,0 +1,25 @@
+0 1 1 1
+1 0 1 1
+1 1 0 1
+1 1 1 0
+
+Não há loops
+
+Não há arestas paralelas
+
+Não há vertices isolados
+
+Vértice 1 tem grau 3
+Vértice 2 tem grau 3
+Vértice 3 tem grau 3
+Vértice 4 tem grau 3
+
+Grau máximo: 3
+Grau mínimo: 3
+
+Grafo Completo
+Grafo regular
+
+O caminho não é elementar
+O caminho é um ciclo
+O caminho é um trajeto
