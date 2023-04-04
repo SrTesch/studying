@@ -4,10 +4,10 @@ int main(){
     int x;
     double qtd;
     char tipo;
-    double coelho = 0 , rato = 0, sapo = 0, total = 0;
+    int coelho = 0 , rato = 0, sapo = 0, total = 0;
     scanf("%d", &x);
     for(x; x > 0; x--){
-        scanf("%lf %c", &qtd, &tipo);
+        scanf("%d %c", &qtd, &tipo);
         total += qtd;
         if(tipo == 'C')
             coelho+= qtd;
@@ -16,10 +16,10 @@ int main(){
         else
             rato += qtd;
     }
-    printf("Total: %lf cobaias\n", total);
-    printf("Total de coelhos: %lf\n", coelho);
-    printf("Total de ratos: %lf\n", rato);
-    printf("Total de sapos: %lf\n", sapo);
+    printf("Total: %d cobaias\n", total);
+    printf("Total de coelhos: %d\n", coelho);
+    printf("Total de ratos: %d\n", rato);
+    printf("Total de sapos: %d\n", sapo);
 
 
     double totalcoelho;
