@@ -4,9 +4,9 @@
 typedef struct noAVL{
     int cont;
     int FB;
-    noAVL pai;
-    noAVL esq;
-    noAVL dir;
+    noAVL * pai;
+    noAVL * esq;
+    noAVL * dir;
 }noAVL;
 
 void insertNode(noAVL * tree){
