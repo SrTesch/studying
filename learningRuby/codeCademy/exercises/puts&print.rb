@@ -4,4 +4,4 @@ print 'Hello'
 
 puts 'Hello'
 
-print 'Hello'
+p 'Hello'
