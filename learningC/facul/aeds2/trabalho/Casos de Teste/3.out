@@ -1,0 +1,192 @@
+Todos os dados foram carregados com sucesso!!
+Total de 36 palavras inseridas no dicionário
+
+*** MENU DE OPÇÕES: ENTRE COM A OPÇÃO DESEJADA ***
+
+1. Pesquisa
+2. Inserção
+3. Remoção
+4. Impressão de um nó
+5. Impressão da árvore
+6. Encerrar
+
+1
+Informe a palavra a ser Pesquisada:     
+
+NEVE
+Palavra Inexistente!
+
+*** MENU DE OPÇÕES: ENTRE COM A OPÇÃO DESEJADA ***
+
+1. Pesquisa
+2. Inserção
+3. Remoção
+4. Impressão de um nó
+5. Impressão da árvore
+6. Encerrar
+
+1
+Informe a palavra a ser Pesquisada:     
+
+BROTO
+Palavra Inexistente!
+
+*** MENU DE OPÇÕES: ENTRE COM A OPÇÃO DESEJADA ***
+
+1. Pesquisa
+2. Inserção
+3. Remoção
+4. Impressão de um nó
+5. Impressão da árvore
+6. Encerrar
+
+1
+Informe a palavra a ser Pesquisada:     
+
+ZUNIDOS
+Palavra Inexistente!
+
+*** MENU DE OPÇÕES: ENTRE COM A OPÇÃO DESEJADA ***
+
+1. Pesquisa
+2. Inserção
+3. Remoção
+4. Impressão de um nó
+5. Impressão da árvore
+6. Encerrar
+
+1
+Informe a palavra a ser Pesquisada:     
+
+COMODO
+A Palavra COMODO foi encontrada no NÓ 'C' nível 1
+
+*** MENU DE OPÇÕES: ENTRE COM A OPÇÃO DESEJADA ***
+
+1. Pesquisa
+2. Inserção
+3. Remoção
+4. Impressão de um nó
+5. Impressão da árvore
+6. Encerrar
+
+1
+Informe a palavra a ser Pesquisada:     
+
+ABSOLUTA
+A Palavra ABSOLUTA foi encontrada no NÓ 'A' nível 2
+
+*** MENU DE OPÇÕES: ENTRE COM A OPÇÃO DESEJADA ***
+
+1. Pesquisa
+2. Inserção
+3. Remoção
+4. Impressão de um nó
+5. Impressão da árvore
+6. Encerrar
+
+1
+Informe a palavra a ser Pesquisada:     
+
+MATOGROSSENSE
+A Palavra MATOGROSSENSE foi encontrada no NÓ 'M' nível 3
+
+*** MENU DE OPÇÕES: ENTRE COM A OPÇÃO DESEJADA ***
+
+1. Pesquisa
+2. Inserção
+3. Remoção
+4. Impressão de um nó
+5. Impressão da árvore
+6. Encerrar
+
+1
+Informe a palavra a ser Pesquisada:     
+
+NEVOEIRO
+A Palavra NEVOEIRO foi encontrada no NÓ 'N' nível 2
+
+*** MENU DE OPÇÕES: ENTRE COM A OPÇÃO DESEJADA ***
+
+1. Pesquisa
+2. Inserção
+3. Remoção
+4. Impressão de um nó
+5. Impressão da árvore
+6. Encerrar
+
+1
+Informe a palavra a ser Pesquisada:     
+
+ZURETA
+A Palavra ZURETA foi encontrada no NÓ 'Z' nível 3
+
+*** MENU DE OPÇÕES: ENTRE COM A OPÇÃO DESEJADA ***
+
+1. Busca
+2. Inserção
+3. Remoção
+4. Impressão de um nó
+5. Impressão da árvore
+6. Encerrar
+
+5
+Imprimindo Árvore...
+
+- Nó A nível 2 -
+ABSOLUTA
+ABSOLUTAMENTE
+ABSOLUTISMO
+ABSOLUTISTA
+ABSOLUTO
+ABSOLVER
+ABSOLVICAO
+ABSORCAO
+ABSORTO
+ABSORVE
+ABSORVENTE
+ABSORVER
+ABSTEMIO
+ABSTENCAO
+
+- Nó C nível 1 -
+COMOCAO
+COMODA
+COMODIDADE
+COMODISMO
+COMODISTA
+COMODO
+COMODOROZUMBIR
+
+- Nó M nível 3 -
+MATOGROSSENSE
+MATRACA
+MATRAQUEAR
+MATREIRICE
+MATREIRO
+MATRIARCA
+
+- Nó N nível 2 -
+NEVES
+NEVOA
+NEVOEIRO
+
+- Nó Z nível 3 -
+ZUMBIR
+ZUNIDO
+ZUNIR
+ZUNZUM
+ZURETA
+ZURRAR
+
+*** MENU DE OPÇÕES: ENTRE COM A OPÇÃO DESEJADA ***
+
+1. Pesquisa
+2. Inserção
+3. Remoção
+4. Impressão de um nó
+5. Impressão da árvore
+6. Encerrar
+
+6
+Programa Encerrado!!

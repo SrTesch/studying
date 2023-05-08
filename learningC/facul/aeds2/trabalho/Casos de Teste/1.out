@@ -1,0 +1,50 @@
+Todos os dados foram carregados com sucesso!!
+Total de 18 palavras inseridas no dicionário
+
+*** MENU DE OPÇÕES: ENTRE COM A OPÇÃO DESEJADA ***
+
+1. Busca
+2. Inserção
+3. Remoção
+4. Impressão de um nó
+5. Impressão da árvore
+6. Encerrar
+
+5
+Imprimindo Árvore...
+
+- Nó A nível 2 -
+ABACATEIRO
+ABACAXI
+ABAIXO
+ABAJUR
+ABALAR
+ABALAVEL
+ABALO
+ACHAR
+ALHO
+
+- Nó B nível 1 -
+BOXE
+BRASA
+BREVE
+BRISA
+BROTO
+
+- Nó C nível 2 -
+CABALISTICO
+CABANA
+CABARE
+CABECA
+
+*** MENU DE OPÇÕES: ENTRE COM A OPÇÃO DESEJADA ***
+
+1. Pesquisa
+2. Inserção
+3. Remoção
+4. Impressão de um nó
+5. Impressão da árvore
+6. Encerrar
+
+6
+Programa Encerrado!!
