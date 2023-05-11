@@ -2,6 +2,7 @@
 
 int main(){
 int i,j,n;
+
 printf("Digite quantas linhas você quer na sua pirâmide:\n");
 scanf("%d", &n);
 for(i = 1; i <= n; i++){
