@@ -17,6 +17,8 @@ typedef struct noAVL{
 
 noAVL * newTree(char inicial);
 
-void procuraNo(noAVL *atual, char palavra[20]);
+noAVL * procuraNo(noAVL *atual, char palavra[20]);
+
+int inserir(noAVL ** raiz);
 
 #endif

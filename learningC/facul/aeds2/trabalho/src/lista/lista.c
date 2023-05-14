@@ -8,7 +8,28 @@ list * newList(char p[20]){
     return new;
 }
 
-void newWord(list ** lista, char p[20]){
+int searchInList(list ** lista, char p[20]){
+    list * atual = (*lista);
+
+    if(strcmp(atual, p))
+        return 1;
+    
+    while(atual != NULL){
+        atual = atual->prox;
+        if(strcmp(atual, p))
+            return 1;
+    }
+
+    return 0;
+}
+
+int newWord(list ** lista, char p[20]){
+    
+    if(searchInList(&lista, p) == 1){
+        printf("Esta palavra já foi inserida\n");
+        return 0;
+    }
+
     list * aux;
     aux = (*lista)->prox;
 
@@ -20,4 +41,5 @@ void newWord(list ** lista, char p[20]){
     
     new->prox = aux;
     aux->ant = new;
+    return 1;
 }

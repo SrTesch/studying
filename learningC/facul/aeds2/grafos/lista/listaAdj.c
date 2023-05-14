@@ -1,11 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct __no{
-    int aresta;
-    struct __no * prox;
-    int peso;
-}no;
+#include "listaAdj.h"
 
 void inicializa(no ** lista, int v){
     for(int i = 0; i < v; i++)

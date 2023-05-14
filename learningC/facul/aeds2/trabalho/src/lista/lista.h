@@ -14,6 +14,8 @@ typedef struct list{
 
 list * newList(char p[20]);
 
-void newWord(list ** lista, char p[20]);
+int searchInList(list ** lista, char p[20]);
+
+int newWord(list ** lista, char p[20]);
 
 #endif
