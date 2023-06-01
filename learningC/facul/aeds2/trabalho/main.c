@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-//ARVORE.C qwRFWÇOEIUJGFTHÇAWOEISHDGFOWIQEHDGFWÇALEOKDJHFG
+//ARVORE.C
 
 typedef struct __list{
     char palavra[20];
@@ -18,6 +18,8 @@ typedef struct __noAVL{
     struct __noAVL * esq;
     struct __noAVL * dir;
 }noAVL;
+
+
 
 int searchInList(list ** lista, char p[20]){
     list * atual = (*lista);
@@ -108,28 +110,21 @@ void balanceAVL(noAVL ** node) {
         return;
     }
 
-    // Left subtree is taller
     if ((*node)->fb < -1) {
-        // Left-Right case: Left rotation on the left child, then right rotation on the current node
         if ((*node)->esq->fb > 0) {
             LL(&((*node)->esq));
         }
 
-        // Right rotation on the current node
         RR(node);
     }
-    // Right subtree is taller
     else if ((*node)->fb > 1) {
-        // Right-Left case: Right rotation on the right child, then left rotation on the current node
         if ((*node)->dir->fb < 0) {
             RR(&((*node)->dir));
         }
 
-        // Left rotation on the current node
         LL(node);
     }
 
-    // Recursively balance the left and right subtrees
     balanceAVL(&((*node)->esq));
     balanceAVL(&((*node)->dir));
 }
