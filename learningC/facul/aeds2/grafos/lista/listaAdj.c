@@ -29,6 +29,7 @@ void ler(no **lista, int a, int tipo){
             scanf("%d %d", &ini, &fim);
             no * new = (no *) malloc(sizeof(no));
             new->aresta = fim;
+            new->prox = NULL;
             if(lista[ini-1] == NULL)
                 lista[ini-1] = new;
             else{
@@ -36,15 +37,16 @@ void ler(no **lista, int a, int tipo){
                 lista[ini-1] = new;
             }
             if(tipo == 0){
-                no * other = (no *)malloc(sizeof(no));
-                other->aresta = ini;
+                no * new = (no *) malloc(sizeof(no));
+                new->aresta = ini;
+                new->prox = NULL;
                 if(lista[fim-1] == NULL)
-                    other->prox = lista[fim-1];
+                    lista[fim-1] = new;
                 else{
                     new->prox = lista[fim-1];
-                    lista[fim-1] = new;
+                    lista[ini-1] = new;
                 }
-                printf("Inseriu o no %d\n", i);
+                printf("Inseriu a aresta %d\n", i);
             }
             new = NULL;
         }
@@ -53,7 +55,7 @@ void ler(no **lista, int a, int tipo){
 
 void printaLis(no ** lis, int ver){
     no * x;
-    for(int i = 0; i < ver; i++){
+    for(int i = 0; i < ver-1; i++){
         x = lis[i];
         printf("%d: %d ", i+1, x->aresta);
         while(x->prox != NULL){
@@ -67,9 +69,11 @@ void printaLis(no ** lis, int ver){
 void verificaLoop(no ** lis, int ver){
     no * x;
     int total;
-    for(int i = 0; i < ver; i++){
+    for(int i = 0; i < ver-1; i++){
         x = lis[i];
+        int why = 0;
         while(x->prox != NULL){
+            why++;
             if(x->aresta == i)
                 printf("O vértice %d, possui um loop", i+1);
             x = x->prox;
@@ -84,30 +88,39 @@ int grauDoNoX(no ** lis, int x){
         return 0;
     }else{
         y = lis[x];
-        while(y->prox != NULL)
+        while(y->prox != NULL){
             cont++;
+            y = y->prox;
+        }
+        return cont;
     }
 }
 
 void imprimeGraus(no ** lis, int v){
     int grau, max, min;
     grau = grauDoNoX(lis, 0);
+    printf("Grau do no 1: %d\n", grau);
     max = grau;
-    min = min;
-    printf("Vértice 1 tem grau %d\n", grau);
-    for(int i = 1; i < v; i++){
+    min = grau;
+    for(int i = 1; i < v-1; i++){
         grau = grauDoNoX(lis, i);
+
+        if(grau > max)
+            max = grau;
+        else if(grau < min)
+            min = grau;
+
         printf("Vértice %d tem grau %d\n", i+1, grau);
     }
     puts("");
     printf("Gráu máximo: %d\n", max);
-    printf("Gráu minimo: %d\n", min);
+    printf("Gráu mínimo: %d\n", min);
 }
 
 void verificaIsolados(no ** lis, int v){
     int total = 0;
-    int isolados[v];
-    for(int i = 0; i < v; i++){
+    int isolados[v-1];
+    for(int i = 0; i < v-1; i++){
         isolados[i] = 0;
         if(grauDoNoX(lis, i) == 0){
             isolados[i] = 1;
@@ -158,7 +171,7 @@ int main(){
     ler(lista, arestas, tipo);
     printaLis(lista, ver);
     verificaLoop(lista, ver);
-    imprimeGraus(lista, ver);
     verificaIsolados(lista, ver);
+    imprimeGraus(lista, ver);
     return 0;
 }
