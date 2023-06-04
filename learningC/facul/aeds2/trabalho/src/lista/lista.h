@@ -3,7 +3,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "lista.c"
 #include "../arvore/arvore.h"
 
 typedef struct list{

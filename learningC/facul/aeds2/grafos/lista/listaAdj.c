@@ -44,9 +44,10 @@ void ler(no **lista, int a, int tipo){
                     lista[fim-1] = new;
                 else{
                     new->prox = lista[fim-1];
-                    lista[ini-1] = new;
+                    lista[fim-1] = new;
                 }
                 printf("Inseriu a aresta %d\n", i);
+                printf("Esta aresta está ligando os seguintes nós: %d <-> %d\n", fim, new->aresta);
             }
             new = NULL;
         }
@@ -55,7 +56,7 @@ void ler(no **lista, int a, int tipo){
 
 void printaLis(no ** lis, int ver){
     no * x;
-    for(int i = 0; i < ver-1; i++){
+    for(int i = 0; i < ver; i++){
         x = lis[i];
         printf("%d: %d ", i+1, x->aresta);
         while(x->prox != NULL){
