@@ -7,8 +7,8 @@ void inicializa(int v, int matriz[v][v]){
         }
     }
 }
-void iniciaELe(int vertices, int arestas, int tipo, int matriz[vertices][vertices], int matrizPonderada[vertices][vertices]){
-    inicializa(vertices, matriz);
+void iniciaELe(int v/*vertices*/, int arestas, int tipo, int matriz[v][v], int matrizPonderada[v][v]){
+    inicializa(v, matriz);
     
     if(tipo == 0){
         int x = 0, inicio, fim;
@@ -21,7 +21,7 @@ void iniciaELe(int vertices, int arestas, int tipo, int matriz[vertices][vertice
     }else if(tipo == 1){
         int x = 0, inicio, fim, peso;
         //criando matriz para guardar os pesos de cada aresta
-        inicializa(vertices, matrizPonderada);
+        inicializa(v, matrizPonderada);
 
         while (x < arestas){
             scanf("%d %d %d", &inicio, &fim, &peso);
@@ -40,7 +40,7 @@ void iniciaELe(int vertices, int arestas, int tipo, int matriz[vertices][vertice
         }
     }else if(tipo == 3){
         int x = 0, inicio, fim, peso;
-        inicializa(vertices, matrizPonderada);
+        inicializa(v, matrizPonderada);
         while (x < arestas){
             scanf("%d %d %d", &inicio, &fim, &peso);
             matriz[inicio-1][fim-1]++;
