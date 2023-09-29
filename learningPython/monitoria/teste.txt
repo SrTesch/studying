@@ -1,0 +1,8 @@
+função fatorial( n ){
+    int fat = 1;
+    para i de 1 até n. faça:
+        fat *= i;
+    fimpara;
+
+    retorna fat;  
+}
