@@ -1,5 +1,5 @@
 class HelloWorld
     def self.hello
-      "Eu sou lindo!"
+     p "Eu sou lindo!"
     end
   end
