@@ -1,0 +1,1 @@
+select max(p1.price), min(p2.price) from products p1, products p2;
