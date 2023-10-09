@@ -11,12 +11,12 @@ from consulta as c
 having c.codmed in (select m.codmed from Médico as m)
 group by codpac;
 
+
 create table Ambulatório(
     codamb int primary key,
     andar char(3),
     capacidade int
 );
-
 
 Create table Paciente(
     codpac int primary key,
