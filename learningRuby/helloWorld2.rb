@@ -1,2 +1,0 @@
-p ("eu sou lindo");
-
