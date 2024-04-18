@@ -3,7 +3,7 @@ seila = []
 
 for i in range(100):
     n = random.randint(1,100)
-    seila.append(n)
+    ifila.append(n)
 
 k = int(input("Digite um valor: "))
 
